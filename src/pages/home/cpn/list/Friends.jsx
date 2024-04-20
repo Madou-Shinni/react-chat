@@ -12,7 +12,7 @@ const Friends = () => {
         console.log(i)
     }
 
-    return <div className="flex">
+    return <>
         <Listbox
             aria-label="User Menu"
             onAction={(key) => handleAction(key)}
@@ -35,7 +35,7 @@ const Friends = () => {
                 </ListboxItem>
             })}
         </Listbox>
-    </div>
+    </>
 }
 
 export default Friends;

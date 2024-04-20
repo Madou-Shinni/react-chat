@@ -12,7 +12,7 @@ const Groups = () => {
         console.log(i)
     }
 
-    return <div className="flex">
+    return <>
         <Listbox
             aria-label="User Menu"
             onAction={(key) => handleAction(key)}
@@ -35,7 +35,7 @@ const Groups = () => {
                 </ListboxItem>
             })}
         </Listbox>
-    </div>
+    </>
 }
 
 export default Groups;
