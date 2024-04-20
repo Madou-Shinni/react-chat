@@ -47,7 +47,7 @@ const ChatList = () => {
                 }}
             >
                 <ListboxItem
-                    key="issues"
+                    key="issues1"
                     endContent={<ItemCounter number={13} />}
                     showDivider
                     startContent={
@@ -60,7 +60,7 @@ const ChatList = () => {
                     </div>
                 </ListboxItem>
                 <ListboxItem
-                    key="issues"
+                    key="issues2"
                     endContent={<ItemCounter number={13} />}
                     showDivider
                     startContent={
@@ -70,7 +70,7 @@ const ChatList = () => {
                     Issues
                 </ListboxItem>
                 <ListboxItem
-                    key="issues"
+                    key="issues3"
                     endContent={<ItemCounter number={13} />}
                     showDivider
                     startContent={

@@ -1,11 +1,11 @@
-import Sidebar from "../../components/Sidebar.jsx";
-import ChatList from "../../components/ChatList.jsx";
-import ChatWindow from "../../components/ChatWindow.jsx";
+import Sidebar from "./cpn/Sidebar.jsx";
+import ListWrapper from "@/pages/home/cpn/list/ListWrapper.jsx";
+import ChatWindow from "@/components/ChatWindow.jsx";
 
 const Home = () => {
     return <div className="flex">
         <Sidebar />
-        <ChatList />
+        <ListWrapper/>
         <ChatWindow />
     </div>
 }
