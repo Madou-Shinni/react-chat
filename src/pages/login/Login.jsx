@@ -1,33 +1,43 @@
 import {Button, Input} from "@nextui-org/react";
 import {useState, useEffect} from "react";
-import {useSearchParams} from "react-router-dom";
+import {useSearchParams,useNavigate} from "react-router-dom";
 import {login} from "@/api/user.js";
 import DynamicHeroIcon from "../../components/icon/Icon.jsx";
-import {OauthGithubUrl} from "../../constants/login.js";
+import {LoginType, OauthGithubUrl} from "../../constants/login.js";
 import "./index.css"
 import Form from "./Form.jsx";
 import {signup} from "../../api/user.js";
+import {setUserInfo} from "./storage.js";
+import toast from "react-hot-toast";
 
 const Login = () => {
     const [isLoginForm, setIsLoginForm] = useState(true);
+    const navigate = useNavigate();
 
     const [query] = useSearchParams();
     const code = query.get('code');
-    const handleLogin = async (auth) => {
+    const handleLogin = async (auth,data) => {
         if (auth === 'github') {
             window.location.href = OauthGithubUrl;
+            return
         }
         // Add your login logic here
-        // const res = await login({code: '1111'})
+        const res = await login({type: LoginType.Github,github: data})
+        if (res.code) {
+            toast.error(res.message)
+        }else {
+            toast.success('login success')
+            setUserInfo(res)
+            navigate('/')
+        }
     };
 
     useEffect( () => {
         if (code) {
             // Add your login logic here
-            const res = async () => await login({code})
-            console.log(res)
+            handleLogin('', {code})
         }
-    }, []);
+    }, [code]);
 
     return <>
         <div className="flex h-screen">

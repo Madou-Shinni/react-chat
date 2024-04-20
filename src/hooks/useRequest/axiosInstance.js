@@ -12,7 +12,7 @@ const AxiosInstance = axios.create(axiosConfig);
 
 AxiosInstance.interceptors.request.use(
     (config) => {
-        config.headers.set('Authorization', 'Bearer ' + storage.get('userInfo')?.token);
+        config.headers.set('Authorization', 'Bearer ' + storage.get('userInfo')?.token || '');
         return config;
     },
     (error) => {
