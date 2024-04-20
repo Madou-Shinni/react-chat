@@ -1,12 +1,15 @@
 import React, {useState} from 'react'
+import {useNavigate} from "react-router-dom";
 import toast from 'react-hot-toast';
 import {Button, Input} from "@nextui-org/react";
 import {login, signup} from "@/api/user.js";
 import {LoginType} from "../../constants/login.js";
+import {setUserInfo} from "./storage.js";
 
 const Form = ({unplaceholder,btnName,submitType}) => {
     const [account, setAccount] = useState('')
     const [password, setPassword] = useState('')
+    const navigate = useNavigate();
 
     const handleSignUp = (data) => signup(data)
     const handleLogin = (data) => login({type: LoginType.Account,account: data})
@@ -25,6 +28,8 @@ const Form = ({unplaceholder,btnName,submitType}) => {
                 toast.error(res.message)
             }else {
                 toast.success('login success')
+                setUserInfo(res)
+                navigate('/')
             }
         }
     }

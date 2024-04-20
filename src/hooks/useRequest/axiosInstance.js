@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {storage} from "../../utils/storage.js";
 
 const axiosConfig = {
     baseURL: '/api',
@@ -8,6 +9,19 @@ const axiosConfig = {
 };
 
 const AxiosInstance = axios.create(axiosConfig);
+
+AxiosInstance.interceptors.request.use(
+    (config) => {
+        config.headers.set('Authorization', 'Bearer ' + storage.get('userInfo')?.token);
+        return config;
+    },
+    (error) => {
+        if (error.response && error.response.status === 501) {
+            return error.response.data;
+        }
+        throw error;
+    }
+)
 
 AxiosInstance.interceptors.response.use(
     (res) => {
