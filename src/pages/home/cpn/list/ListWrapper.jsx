@@ -6,6 +6,7 @@ import Friends from "./Friends.jsx";
 import {SearchIcon} from "../../../../components/icon/SearchIcon.jsx";
 import {Input} from "@nextui-org/react";
 import Groups from "./Groups.jsx";
+import ChatList from "./ChatList.jsx";
 
 const ListWrapper = () => {
     {/* 获取state */}
@@ -38,6 +39,7 @@ const ListWrapper = () => {
         <div className={'list-wrapper'}>
             <div className={`${storeCtx.selectedMenu === 'friend' ? 'visible' : 'invisible h-[0px]'}`}><Friends/></div>
             <div className={`${storeCtx.selectedMenu === 'group' ? 'visible' : 'invisible h-[0px]'}`}><Groups/></div>
+            <div className={`${storeCtx.selectedMenu === 'contact' ? 'visible' : 'invisible h-[0px]'}`}><ChatList/></div>
         </div>
     </div>
 }
